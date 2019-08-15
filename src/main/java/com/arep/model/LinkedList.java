@@ -27,7 +27,8 @@ public class LinkedList<T> {
         else {
             Node lastNode=getLast();
             lastNode.setRight(node);
-            head.setAt0(node);
+            node.setLeft(lastNode);
+            head.setAt1(node);
             size++;
         }
     }
@@ -56,7 +57,7 @@ public class LinkedList<T> {
         int iterator = 0;
         Node<T> current=head.getValue0();
         while (iterator<=index) {
-            current = current.getNeighbours().getValue1();
+            current = current.getRight();
             iterator++;
         }
         return current;

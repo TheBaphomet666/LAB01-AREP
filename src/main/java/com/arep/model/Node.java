@@ -5,24 +5,22 @@ import org.javatuples.Pair;
 
 public class Node<T> {
 
-    private Pair<Node,Node> neighbours;
+    private Node left;
+    private Node right;
     private T data;
 
     public Node(Double data) {
-        neighbours = new Pair<Node, Node>(null,null);
         data = data;
     }
 
-    public Pair<Node, Node> getNeighbours() {
-        return neighbours;
-    }
+
 
     public void setRight(Node node){
-        neighbours.setAt1(node);
+        right=node;
     }
 
     public void setleft(Node node){
-        neighbours.setAt0(node);
+        left=node;
     }
     public T getData() {
         return data;
@@ -32,16 +30,29 @@ public class Node<T> {
         data = data;
     }
     public boolean hasNext(){
-        return neighbours.getValue1()!=null;
+        return right!=null;
     }
     public boolean hasPrior(){
-        return neighbours.getValue0()!=null;
+        return left!=null;
+    }
+
+    public Node getLeft() {
+        return left;
+    }
+
+    public void setLeft(Node left) {
+        this.left = left;
+    }
+
+    public Node getRight() {
+        return right;
     }
 
     @Override
     public String toString() {
         return "Node{" +
-                "neighbours=" + neighbours +
+                "left=" + left +
+                ", right=" + right +
                 ", data=" + data +
                 '}';
     }
