@@ -1,12 +1,12 @@
 package com.arep.model;
 
-public class Node<T> {
+public class Node<E> {
 
     private Node left;
     private Node right;
-    private T data;
+    private E data;
 
-    public Node(T data) {
+    public Node(E data) {
         this.data = data;
     }
 
@@ -16,11 +16,11 @@ public class Node<T> {
         right=node;
     }
 
-    public T getData() {
+    public E getData() {
         return data;
     }
 
-    public void setData(T data) {
+    public void setData(E data) {
         data = data;
     }
     public boolean hasNext(){

@@ -1,6 +1,6 @@
 package com.arep.model;
 
-public class LinkedList<T> {
+public class LinkedList<E> {
 
     private Node head;
     private Node tail;
@@ -54,7 +54,7 @@ public class LinkedList<T> {
             throw  new IndexOutOfBoundsException();
         }
         int iterator = 0;
-        Node<T> current=head;
+        Node<E> current=head;
         while (iterator<index) {
             current = current.getRight();
             iterator++;
@@ -71,7 +71,7 @@ public class LinkedList<T> {
             tail=null;
         }
         int iterator = 0;
-        Node<T> current=head;
+        Node<E> current=head;
         while (iterator<index) {
             current = current.getRight();
             iterator++;
@@ -99,7 +99,7 @@ public class LinkedList<T> {
                 ", size=" + size +
                 ", Nodes={");
         int iterator = 0;
-        Node<T> current=head;
+        Node<E> current=head;
         string.append(current);
         while (iterator<size-1) {
             current = current.getRight();
