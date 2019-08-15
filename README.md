@@ -4,8 +4,9 @@ LAB 01 AREP
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
+- you can run ***mvn Install*** to install it into your maven repo and use it
+- Or ***mvn package*** to create the JAR
+- ***mvn javadoc:javadoc*** to generate JavaDocs
 
 ## Running the tests
 

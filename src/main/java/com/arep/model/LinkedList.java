@@ -1,5 +1,9 @@
 package com.arep.model;
 
+/**
+ * Linked List class
+ * @param <E> the type of the data for the list
+ */
 public class LinkedList<E> {
 
     private Node head;
@@ -17,6 +21,10 @@ public class LinkedList<E> {
         return tail;
     }
 
+    /**
+     * adds a new Node
+     * @param node the node to be added
+     */
     public void add(Node node){
         if(isEmpty()){
             setHead(node);
@@ -30,6 +38,11 @@ public class LinkedList<E> {
             size++;
         }
     }
+
+    /**
+     * Sets the Head
+     * @param node the head
+     */
     private void setHead(Node node) {
         head = node;
         tail = node;
@@ -39,6 +52,10 @@ public class LinkedList<E> {
         return size;
     }
 
+    /**
+     * Checks if list is empty
+     * @return true if it s empty
+     */
     public boolean isEmpty(){
         return head==null;
     }
@@ -49,6 +66,12 @@ public class LinkedList<E> {
         return get(size-1);
     }
 
+    /**
+     * gets the node in the given index
+     * @param index the index of the node to get
+     * @return the node
+     * @throws IndexOutOfBoundsException if index is invalid
+     */
     public Node get(int index)throws IndexOutOfBoundsException{
         if(index>=size || index<0){
             throw  new IndexOutOfBoundsException();
@@ -62,6 +85,11 @@ public class LinkedList<E> {
         return current;
     }
 
+    /**
+     * removes the node in the given index
+     * @param index the index about to remove
+     * @throws IndexOutOfBoundsException if index is invalid
+     */
     public void remove(int index) throws IndexOutOfBoundsException{
         if(index>=size || index<0){
             throw  new IndexOutOfBoundsException();
