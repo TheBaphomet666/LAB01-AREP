@@ -1,11 +1,9 @@
 package com.arep.model;
 
-import org.javatuples.Pair;
-
-
 public class LinkedList<T> {
 
-    private Pair<Node,Node> head;
+    private Node head;
+    private Node tail;
     private int size;
 
     public LinkedList() {
@@ -13,10 +11,10 @@ public class LinkedList<T> {
     }
 
     public Node getHead() {
-        return head.getValue0();
+        return head;
     }
     public Node getTail(){
-        return head.getValue1();
+        return tail;
     }
 
     public void add(Node node){
@@ -28,12 +26,13 @@ public class LinkedList<T> {
             Node lastNode=getLast();
             lastNode.setRight(node);
             node.setLeft(lastNode);
-            head.setAt1(node);
+            tail=node;
             size++;
         }
     }
     private void setHead(Node node) {
-        this.head = new Pair<Node, Node>(node,node);
+        head = node;
+        tail = node;
     }
 
     public int getSize() {
@@ -45,21 +44,69 @@ public class LinkedList<T> {
     }
     public Node getLast(){
         if(size==1){
-            return head.getValue0();
+            return head;
         }
         return get(size-1);
     }
 
     public Node get(int index)throws IndexOutOfBoundsException{
-        if(index>=size){
+        if(index>=size || index<0){
             throw  new IndexOutOfBoundsException();
         }
         int iterator = 0;
-        Node<T> current=head.getValue0();
-        while (iterator<=index) {
+        Node<T> current=head;
+        while (iterator<index) {
             current = current.getRight();
             iterator++;
         }
         return current;
+    }
+
+    public void remove(int index) throws IndexOutOfBoundsException{
+        if(index>=size || index<0){
+            throw  new IndexOutOfBoundsException();
+        }
+        if(index==0 && size==1){
+            head=null;
+            tail=null;
+        }
+        int iterator = 0;
+        Node<T> current=head;
+        while (iterator<index) {
+            current = current.getRight();
+            iterator++;
+        }
+        if(current.hasNext() && current.hasPrior()){
+            current.getLeft().setRight(current.getRight());
+            current.getRight().setLeft(current.getLeft());
+        }
+        else if(current.hasNext() && !current.hasPrior()){
+            current.getRight().setLeft(null);
+            head=current.getRight();
+        }
+        else{
+            current.getLeft().setRight(null);
+        }
+        size--;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder string = new StringBuilder();
+        string.append("LinkedList{" +
+                "head=" + head +
+                ", tail=" + tail +
+                ", size=" + size +
+                ", Nodes={");
+        int iterator = 0;
+        Node<T> current=head;
+        string.append(current);
+        while (iterator<size-1) {
+            current = current.getRight();
+            string.append(","+current);
+            iterator++;
+        }
+        string.append("}}");
+        return string.toString();
     }
 }

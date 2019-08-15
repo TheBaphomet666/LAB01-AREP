@@ -1,16 +1,13 @@
 package com.arep.model;
 
-
-import org.javatuples.Pair;
-
 public class Node<T> {
 
     private Node left;
     private Node right;
     private T data;
 
-    public Node(Double data) {
-        data = data;
+    public Node(T data) {
+        this.data = data;
     }
 
 
@@ -19,9 +16,6 @@ public class Node<T> {
         right=node;
     }
 
-    public void setleft(Node node){
-        left=node;
-    }
     public T getData() {
         return data;
     }
@@ -51,9 +45,7 @@ public class Node<T> {
     @Override
     public String toString() {
         return "Node{" +
-                "left=" + left +
-                ", right=" + right +
-                ", data=" + data +
+                "data=" + data +
                 '}';
     }
 }
