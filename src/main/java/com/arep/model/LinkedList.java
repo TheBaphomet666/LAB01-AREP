@@ -2,7 +2,8 @@ package com.arep.model;
 
 import org.javatuples.Pair;
 
-public class LinkedList {
+
+public class LinkedList<T> {
 
     private Pair<Node,Node> head;
     private int size;
@@ -42,15 +43,18 @@ public class LinkedList {
         return head==null;
     }
     public Node getLast(){
+        if(size==1){
+            return head.getValue0();
+        }
         return get(size-1);
     }
 
     public Node get(int index)throws IndexOutOfBoundsException{
-        if(index+1>size){
+        if(index>=size){
             throw  new IndexOutOfBoundsException();
         }
         int iterator = 0;
-        Node current=head.getValue0();
+        Node<T> current=head.getValue0();
         while (iterator<=index) {
             current = current.getNeighbours().getValue1();
             iterator++;

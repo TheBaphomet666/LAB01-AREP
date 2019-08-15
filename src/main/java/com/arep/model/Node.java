@@ -3,13 +3,13 @@ package com.arep.model;
 
 import org.javatuples.Pair;
 
-public class Node {
+public class Node<T> {
 
     private Pair<Node,Node> neighbours;
-    private Double data;
+    private T data;
 
-    public Node(Pair neighbours,Double data) {
-        this.neighbours=neighbours;
+    public Node(Double data) {
+        neighbours = new Pair<Node, Node>(null,null);
         data = data;
     }
 
@@ -24,11 +24,11 @@ public class Node {
     public void setleft(Node node){
         neighbours.setAt0(node);
     }
-    public Double getData() {
+    public T getData() {
         return data;
     }
 
-    public void setData(Double data) {
+    public void setData(T data) {
         data = data;
     }
     public boolean hasNext(){
