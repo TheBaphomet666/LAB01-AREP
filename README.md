@@ -2,6 +2,7 @@
 
 LAB 01 AREP
 
+![Diagram](diagram.png)
 ## Getting Started
 
 - you can run ***mvn Install*** to install it into your maven repo and use it
